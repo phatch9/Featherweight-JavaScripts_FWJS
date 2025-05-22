@@ -4,6 +4,7 @@
 
 ### Expressions in this language include:
 
+#### Statement Declaration 
 *If statements.  Unlike in JavaScript, evaluating if statements returns a value.
 *While expressions.  Unlike in JavaScript, evaluating while statements returns a value (specifically null).
 *Sequence expressions.  (In other words, you may have several statements in a row.)
@@ -16,7 +17,7 @@
 
 Values in this language include booleans, ints, a special null values, and closures.  A closure is a combination of a function definition and its scope environment tracking any free variables in the function body.
 
-
+*** Source Code Structure
 Expression.java contains the representation for all expressions in FWJS.  Each class implements the evaluate method, which takes in an Environment (i.e. the mapping of variables to values) and returns a value.  The types of Values are stored in Value.java.
 
 The main new challenge will be handling functions, which are closures in this language.
@@ -36,6 +37,7 @@ Environment.java handles the resolution of JavaScript variables.  Update the res
 
 *ExpressionTest.java has some JUnit test cases that will be useful to consider.  You can get the JAR files for JUnit from http://junit.org.
 
+### MakeFile Instruction
 
 A Makefile (http://www.gnu.org/software/make/manual/make.html) is provided for this project.  Update the two lines at the top of the file to specify where you have your JUnit libraries.
 
