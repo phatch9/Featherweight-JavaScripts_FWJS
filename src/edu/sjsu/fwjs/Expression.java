@@ -3,117 +3,187 @@ package edu.sjsu.fwjs;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * FWJS expressions.
+ */
 public interface Expression {
+    /**
+     * Evaluate the expression in the context of the specified environment.
+     */
     public Value evaluate(Environment env);
 }
 
+// NOTE: Using package access so that all implementations of Expression
+// can be included in the same file.
+/**
+ * FWJS constants.
+ */
 class ValueExpr implements Expression {
     private Value val;
-    public ValueExpr(Value v) { this.val = v; }
-    public Value evaluate(Environment env) { return this.val; }
+    public ValueExpr(Value v) {
+        this.val = v;
+    }
+    public Value evaluate(Environment env) {
+        return this.val;
+    }
 }
 
+/**
+ * Expressions that are a FWJS variable.
+ */
 class VarExpr implements Expression {
     private String varName;
-    public VarExpr(String varName) { this.varName = varName; }
-    public Value evaluate(Environment env) { return env.resolveVar(varName); }
+    public VarExpr(String varName) {
+        this.varName = varName;
+    }
+    public Value evaluate(Environment env) {
+        Value v = env.resolveVar(varName);
+        return v;
+    }
 }
 
+/**
+ * A print expression.
+ */
 class PrintExpr implements Expression {
     private Expression exp;
-    public PrintExpr(Expression exp) { this.exp = exp; }
+    public PrintExpr(Expression exp) {
+        this.exp = exp;
+    }
     public Value evaluate(Environment env) {
         Value v = exp.evaluate(env);
         System.out.println(v.toString());
         return v;
     }
 }
-
+/**
+ * Binary operators (+, -, *, etc).
+ * Currently only numbers are supported.
+ */
 class BinOpExpr implements Expression {
     private Op op;
     private Expression e1;
     private Expression e2;
-
     public BinOpExpr(Op op, Expression e1, Expression e2) {
         this.op = op;
         this.e1 = e1;
         this.e2 = e2;
     }
 
+    @SuppressWarnings("incomplete-switch")
     public Value evaluate(Environment env) {
-        Value a = e1.evaluate(env);
-        Value b = e2.evaluate(env);
+        Value a = this.e1.evaluate(env);
+        Value b = this.e2.evaluate(env);
+        IntVal num1 = (IntVal) a;
+        IntVal num2 = (IntVal) b;
+        int result;
+        IntVal res;
+        Value res_final = new NullVal();
+        boolean check = false;
+        BoolVal boo;
 
-        // Handle equality for all types
-        if (op == Op.EQ) {
-            return new BoolVal(a.equals(b));
+        switch(this.op)
+        {
+            case ADD :
+
+                result = num1.toInt() + num2.toInt();
+                res = new IntVal(result);
+                res_final =  (Value) res;
+                break;
+
+            case SUBTRACT :
+                result = num1.toInt() - num2.toInt();
+                res = new IntVal(result);
+                res_final =  (Value) res;
+                break;
+
+            case MULTIPLY :
+                result = num1.toInt() * num2.toInt();
+                res = new IntVal(result);
+                res_final =  (Value) res;
+                break;
+
+            case DIVIDE :
+                result = num1.toInt() / num2.toInt();
+                res = new IntVal(result);
+                res_final =  (Value) res;
+                break;
+
+            case MOD :
+                result = num1.toInt() % num2.toInt();
+                res = new IntVal(result);
+                res_final =  (Value) res;
+                break;
+
+            case GT :
+                if(num1.toInt() > num2.toInt())
+                    check = true;
+                boo =  new BoolVal(check);
+                res_final =  (Value) boo;
+                break;
+
+            case GE :
+                if(num1.toInt() >= num2.toInt())
+                    check = true;
+                boo =  new BoolVal(check);
+                res_final =  (Value) boo;
+                break;
+
+            case LT :
+                if(num1.toInt() < num2.toInt())
+                    check = true;
+                boo =  new BoolVal(check);
+                res_final =  (Value) boo;
+                break;
+
+            case LE :
+                if(num1.toInt() <= num2.toInt())
+                    check = true;
+                boo =  new BoolVal(check);
+                res_final =  (Value) boo;
+                break;
+
+            case EQ :
+                if(num1.toInt() == num2.toInt())
+                    check = true;
+                boo =  new BoolVal(check);
+                res_final =  (Value) boo;
+                break;
+
+            default:
+                return new NullVal();
         }
-
-        // Handle arithmetic operations
-        if (op == Op.ADD) {
-            // Handle cases where either operand might be a closure (treat as 0)
-            int left = a instanceof IntVal ? ((IntVal)a).toInt() : 0;
-            int right = b instanceof IntVal ? ((IntVal)b).toInt() : 0;
-            return new IntVal(left + right);
-        }
-
-        // For other operations, require both to be IntVal
-        if (a instanceof IntVal && b instanceof IntVal) {
-            int n1 = ((IntVal)a).toInt();
-            int n2 = ((IntVal)b).toInt();
-            
-            switch(op) {
-                case SUBTRACT: return new IntVal(n1 - n2);
-                case MULTIPLY: return new IntVal(n1 * n2);
-                case DIVIDE: return new IntVal(n1 / n2);
-                case MOD: return new IntVal(n1 % n2);
-                case GT: return new BoolVal(n1 > n2);
-                case GE: return new BoolVal(n1 >= n2);
-                case LT: return new BoolVal(n1 < n2);
-                case LE: return new BoolVal(n1 <= n2);
-                default: throw new RuntimeException("Unsupported operation: " + op);
-            }
-        }
-
-        throw new RuntimeException(String.format(
-            "Unsupported operation between %s and %s with operator %s",
-            a.getClass().getSimpleName(), 
-            b.getClass().getSimpleName(),
-            op));
+        return res_final;
     }
 }
-
+/**
+ * If-then-else expressions.
+ * Unlike JS, if expressions return a value.
+ */
 class IfExpr implements Expression {
     private Expression cond;
     private Expression thn;
     private Expression els;
-    
     public IfExpr(Expression cond, Expression thn, Expression els) {
         this.cond = cond;
         this.thn = thn;
         this.els = els;
     }
-    
     public Value evaluate(Environment env) {
-        Value condVal = cond.evaluate(env);
-        boolean condition;
-        
-        if (condVal instanceof BoolVal) {
-            condition = ((BoolVal)condVal).toBoolean();
-        } else if (condVal instanceof IntVal) {
-            condition = ((IntVal)condVal).toInt() != 0;
-        } else {
-            condition = !(condVal instanceof NullVal);
-        }
-        
-        if (condition) {
-            return thn != null ? thn.evaluate(env) : new NullVal();
-        } else {
-            return els != null ? els.evaluate(env) : new NullVal();
-        }
+        Value c = this.cond.evaluate(env);
+        Value t = this.thn.evaluate(env);
+        Value e = this.els.evaluate(env);
+        BoolVal condition = (BoolVal) c;
+        if(condition.toBoolean() == true)
+            return t;
+        else
+            return e;
     }
 }
 
+/**
+ * While statements (treated as expressions in FWJS, unlike JS).
+ */
 class WhileExpr implements Expression {
     private Expression cond;
     private Expression body;
@@ -123,17 +193,30 @@ class WhileExpr implements Expression {
     }
     public Value evaluate(Environment env) {
         while (true) {
-            Value c = cond.evaluate(env);
-            if (!(c instanceof BoolVal)) {
-                throw new RuntimeException("While condition must evaluate to BoolVal");
+            // Evaluate the condition
+            Value c = this.cond.evaluate(env);
+            
+            // Check if the condition is a BoolVal and if it's true
+            if (c instanceof BoolVal) {
+                BoolVal condition = (BoolVal) c;
+                if (!condition.toBoolean()) {
+                    break; // Exit the loop if the condition is false
+                }
+            } else {
+                // Handle error: condition should be a BoolVal
+                throw new RuntimeException("Condition must be a BoolVal.");
             }
-            if (!((BoolVal)c).toBoolean()) break;
+
+            // Evaluate and execute the body of the while loop
             body.evaluate(env);
         }
-        return new NullVal();
+        return null;
     }
 }
 
+/**
+ * Sequence expressions (i.e. 2 back-to-back expressions).
+ */
 class SeqExpr implements Expression {
     private Expression e1;
     private Expression e2;
@@ -142,11 +225,15 @@ class SeqExpr implements Expression {
         this.e2 = e2;
     }
     public Value evaluate(Environment env) {
-        e1.evaluate(env);
-        return e2.evaluate(env);
+        Value a = this.e1.evaluate(env);
+        Value b = this.e2.evaluate(env);
+        return b;
     }
 }
 
+/**
+ * Declaring a variable in the local scope.
+ */
 class VarDeclExpr implements Expression {
     private String varName;
     private Expression exp;
@@ -155,12 +242,19 @@ class VarDeclExpr implements Expression {
         this.exp = exp;
     }
     public Value evaluate(Environment env) {
-        Value v = exp.evaluate(env);
-        env.createVar(varName, v);
-        return v;
+        // YOUR CODE HERE
+        // create the variable in the current environment
+        // return it
+        env.createVar(varName, exp.evaluate(env));
+        return env.resolveVar(varName);
     }
 }
 
+/**
+ * Updating an existing variable.
+ * If the variable is not set already, it is added
+ * to the global scope.
+ */
 class AssignExpr implements Expression {
     private String varName;
     private Expression e;
@@ -169,12 +263,15 @@ class AssignExpr implements Expression {
         this.e = e;
     }
     public Value evaluate(Environment env) {
-        Value v = e.evaluate(env);
-        env.updateVar(varName, v);
-        return v;
+        Value vari = e.evaluate(env);
+        env.updateVar(varName, vari);
+        return env.resolveVar(varName);
     }
 }
 
+/**
+ * A function declaration, which evaluates to a closure.
+ */
 class FunctionDeclExpr implements Expression {
     private List<String> params;
     private Expression body;
@@ -183,10 +280,17 @@ class FunctionDeclExpr implements Expression {
         this.body = body;
     }
     public Value evaluate(Environment env) {
-        return new ClosureVal(params, body, env);
+        // YOUR CODE HERE
+        // Create the closure
+        // Return closure
+        ClosureVal closure = new ClosureVal(params, body, env);
+        return closure;
     }
 }
 
+/**
+ * Function application.
+ */
 class FunctionAppExpr implements Expression {
     private Expression f;
     private List<Expression> args;
@@ -195,18 +299,16 @@ class FunctionAppExpr implements Expression {
         this.args = args;
     }
     public Value evaluate(Environment env) {
-        Value funcVal = f.evaluate(env);
-        if (funcVal instanceof NullVal) {
-            return new NullVal(); // or throw an exception if preferred
-        }
-        if (!(funcVal instanceof ClosureVal)) {
-            throw new RuntimeException("Attempt to call non-function value: " + funcVal);
-        }
-        ClosureVal closure = (ClosureVal)funcVal;
-        List<Value> argVals = new ArrayList<>();
-        for (Expression arg : args) {
-            argVals.add(arg.evaluate(env));
-        }
-        return closure.apply(argVals);
+        // YOUR CODE HERE
+        // make new list by evaluating the list of expressions
+        List<Value> argList = new ArrayList<>();
+        // Create new closure
+        ClosureVal closure = (ClosureVal) f.evaluate(env);
+        // Evaluate all the expressions in the list
+        // Place in List of Values
+        for(Expression arg : args)
+            argList.add(arg.evaluate(env));
+        // Apply closure
+        return closure.apply(argList);
     }
 }

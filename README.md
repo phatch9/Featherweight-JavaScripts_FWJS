@@ -48,7 +48,7 @@ A Makefile (http://www.gnu.org/software/make/manual/make.html) is provided for t
 `make solution.zip` will produce the zip file of your src/ directory 
 
 
-## Write the lexer
+## TASK 1: Write the lexer
 At this point, you have written an interpreter for our Featherweight JavaScript language.
 In this assignment, you will write the lexer and parser for this language using ANTLR.
 (We won't connect the two just yet -- that will be the next assignment).
@@ -87,7 +87,7 @@ Neither should be part of the resulting AST, so be sure to use 'skip'.
 *Spaces and tabs are whitespace characters, and can be ignored.
 
 
-## Write the parser
+## TASK 2: Write the parser
 ----------------------------
 Once you have your lexing rules complete, you may add your parsing rules.
 In ANTLR, parsing rules start with a lower case letter.
@@ -118,7 +118,7 @@ An expression can be:
 
 The sampleParseTrees/ directory contains some parse trees for the programs found in fwjsScripts/.  All .tree files were generated with grun's -tree option.  Your parse trees should be similar, but might not be exactly identical.  (Note that grun supports a -gui option that might be helpful to examine).
 
-## Write a visitor
+## TASK 3;Write a visitor
 ----------------------------
 Use the same directory structure as in part 2 of the assignment.  Download ExpressionBuilderVisitor.java and Interpreter.java and put them in src/edu/sjsu/fwjs/.
 
