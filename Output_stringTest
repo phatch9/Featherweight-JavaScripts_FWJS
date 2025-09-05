@@ -1,0 +1,116 @@
+% make clean rm -r build
+% make mkdir -p generatedSrc/edu/sjsu/fwjs/parser
+java -jar lib/antlr-4.13.2-complete.jar -no-listener -visitor FeatherweightJavaScript.g4 -o generatedSrc/edu/sjsu/fwjs/parser
+mkdir -p build/edu/sjsu/fwjs
+javac -cp /Users/phch/Downloads/junit-4.13.2.jar:lib/hamcrest-core-1.3.jar:lib/antlr-4.13.2-complete.jar -d build src/edu/sjsu/fwjs/*.java testSrc/edu/sjsu/fwjs/*.java generatedSrc/edu/sjsu/fwjs/parser/*.java
+
+Error:
+'3 + 4;' evaluates to 7
+lamng@Random-MacPro Featherweight-JavaScripts_FWJS % make cle
+an && make
+rm -r build
+mkdir -p generatedSrc/edu/sjsu/fwjs/parser
+java -jar lib/antlr-4.13.2-complete.jar -no-listener -visitor FeatherweightJavaScript.g4 -o generatedSrc/edu/sjsu/fwjs/parser
+mkdir -p build/edu/sjsu/fwjs
+javac -cp /Users/phch/Downloads/junit-4.13.2.jar:lib/hamcrest-core-1.3.jar:lib/antlr-4.13.2-complete.jar -d build src/edu/sjsu/fwjs/*.java testSrc/edu/sjsu/fwjs/*.java generatedSrc/edu/sjsu/fwjs/parser/*.java
+% java -cp build:lib/antlr-4.13.2-complete.jar:lib/junit-4.13.2.jar:lib/hamcrest-core-1.3.jar edu.sjsu.fwjs.Interpreter string_tests
+.fwjs
+line 21:14 token recognition error at: '!'
+line 21:15 mismatched input '=' expecting {'*', '/', '+', '-', '%', '>', '<', '>=', '<=', '==', '(', ')'}
+line 21:25 extraneous input ')' expecting ';'
+line 48:9 extraneous input 'greet' expecting '('
+line 49:11 missing ';' at '"Hello, "'
+line 51:0 missing ';' at 'print'
+line 56:39 token recognition error at: '.'
+line 56:40 extraneous input 'length' expecting ')'
+Test 1: String literals
+Hello
+
+"Quoted"
+Line 1
+Line 2
+
+Test 2: String concatenation
+Hello World
+Number: 42
+Boolean: true
+Null: null
+
+Test 3: String comparisons
+true
+false
+true
+false
+apple
+
+Test 4: String variables
+Hello, Alice!
+
+Test 5: Strings in control structures
+It's an apple!
+Not an apple
+
+Test 6: String in while loop
+Count: 0
+Count: 1
+Count: 2
+
+Test 7: String with function
+Exception in thread "main" java.lang.ClassCastException: class edu.sjsu.fwjs.NullVal cannot be cast to class edu.sjsu.fwjs.ClosureVal (edu.sjsu.fwjs.NullVal and edu.sjsu.fwjs.ClosureVal are in unnamed module of loader 'app')
+        at edu.sjsu.fwjs.FunctionAppExpr.evaluate(Expression.java:318)
+        at edu.sjsu.fwjs.PrintExpr.evaluate(Expression.java:54)
+        at edu.sjsu.fwjs.SeqExpr.evaluate(Expression.java:241)
+        at edu.sjsu.fwjs.SeqExpr.evaluate(Expression.java:240)
+        at edu.sjsu.fwjs.SeqExpr.evaluate(Expression.java:240)
+        at edu.sjsu.fwjs.SeqExpr.evaluate(Expression.java:240)
+        at edu.sjsu.fwjs.SeqExpr.evaluate(Expression.java:240)
+        at edu.sjsu.fwjs.SeqExpr.evaluate(Expression.java:240)
+        at edu.sjsu.fwjs.SeqExpr.evaluate(Expression.java:240)
+        at edu.sjsu.fwjs.SeqExpr.evaluate(Expression.java:240)
+        at edu.sjsu.fwjs.SeqExpr.evaluate(Expression.java:240)
+        at edu.sjsu.fwjs.Interpreter.main(Interpreter.java:32)
+lamng@Random-MacPro Featherweight-JavaScripts_FWJS % java -cp build:lib/antlr-4.13.2-complete.jar:lib/junit-4.13.2.jar:lib
+/hamcrest-core-1.3.jar edu.sjsu.fwjs.Interpreter string_tests
+.fwjs
+line 21:14 token recognition error at: '!'
+line 21:15 mismatched input '=' expecting {'*', '/', '+', '-', '%', '>', '<', '>=', '<=', '==', '(', ')'}
+line 21:25 extraneous input ')' expecting ';'
+Test 1: String literals
+Hello
+
+"Quoted"
+Line 1
+Line 2
+
+Test 2: String concatenation
+Hello World
+Number: 42
+Boolean: true
+Null: null
+
+Test 3: String comparisons
+true
+false
+true
+false
+apple
+
+Test 4: String variables
+Hello, Alice!
+
+Test 5: Strings in control structures
+It's an apple!
+Not an apple
+
+Test 6: String in while loop
+Count: 0
+Count: 1
+Count: 2
+
+Test 7: Escaped characters
+Tab:    After tab
+Backslash: \
+Newline:
+Second line
+
+All string tests completed!

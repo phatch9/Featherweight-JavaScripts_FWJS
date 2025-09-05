@@ -1,5 +1,5 @@
 // Generated from /Users/phch/Documents/Featherweight-JavaScripts_FWJS/FeatherweightJavaScript.g4 by ANTLR 4.13.1
- package edu.sjsu.fwjs.parser; 
+package edu.sjsu.fwjs.parser; 
 import org.antlr.v4.runtime.atn.*;
 import org.antlr.v4.runtime.dfa.DFA;
 import org.antlr.v4.runtime.*;
