@@ -1,0 +1,64 @@
+// String literal tests
+print("Test 1: String literals");
+print("Hello");
+print("");  // Empty string
+print("\"Quoted\"");  // String with quotes
+print("Line 1\nLine 2");  // String with newline
+
+// String concatenation tests
+print("\nTest 2: String concatenation");
+print("Hello" + " " + "World");
+print("Number: " + 42);
+print("Boolean: " + true);
+print("Null: " + null);
+
+// String comparison tests
+print("\nTest 3: String comparisons");
+print("apple" < "banana");  // true
+print("apple" > "banana");  // false
+print("apple" == "apple");  // true
+print("apple" == "banana"); // false
+print("apple" != "banana"); // true
+
+// String with variables
+print("\nTest 4: String variables");
+var name = "Alice";
+var greeting = "Hello, " + name + "!";
+print(greeting);
+
+// String with control structures
+print("\nTest 5: Strings in control structures");
+var fruit = "apple";
+if (fruit == "apple") {
+    print("It's an apple!");
+} else {
+    print("Not an apple");
+}
+
+// String in while loop
+print("\nTest 6: String in while loop");
+var count = 0;
+while (count < 3) {
+    print("Count: " + count);
+    count = count + 1;
+}
+
+// String with function
+print("\nTest 7: String with function");
+function greet(person) {
+    return "Hello, " + person + "!";
+}
+print(greet("Bob"));
+
+// String with nested expressions
+print("\nTest 8: Nested string expressions");
+print("2 + 2 = " + (2 + 2));
+print("Length of 'hello' is " + "hello".length);
+
+// String with escaped characters
+print("\nTest 9: Escaped characters");
+print("Tab:\tAfter tab");
+print("Backslash: \\");
+print("Newline:\nSecond line");
+
+print("\nAll string tests completed!");
