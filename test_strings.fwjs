@@ -1,0 +1,27 @@
+// Test string literals and concatenation
+print("Hello World");
+print("Hello" + " " + "World");
+
+// Test string with numbers
+var greeting = "Hello";
+var name = "FWJS";
+print(greeting + " " + name + "!");
+
+// Test string concatenation with numbers
+var num = 42;
+print("The answer is " + num);
+
+// Test string comparison
+var str1 = "apple";
+var str2 = "banana";
+print(str1 < str2);
+print(str1 == str2);
+print(str1 == "apple");
+
+// Test string variables
+var message = "Programming is fun";
+print(message);
+
+// Test empty string
+var empty = "";
+print("Empty: " + empty + "END");
