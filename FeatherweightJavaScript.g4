@@ -15,6 +15,7 @@ PRINT     : 'print' ;
 INT       : [1-9][0-9]* | '0' ;
 BOOL      : 'true' | 'false' ;
 NULL      : 'null' ;
+STRING    : '"' (~["\\\r\n] | '\\' .)* '"' ;
 
 // Symbols
 MUL       : '*' ;
@@ -71,6 +72,7 @@ expr: expr op=( '*' | '/' | '%' ) expr                  # mulDivMod
     | INT                                               # int
     | BOOL                                              # bool
     | NULL                                              # null
+    | STRING                                            # string
     | LPAREN expr RPAREN                                # parens
     | ID                                                # id
     ;
