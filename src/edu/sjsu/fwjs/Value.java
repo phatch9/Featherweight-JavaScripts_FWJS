@@ -47,6 +47,21 @@ class IntVal implements Value {
     }
 }
 
+/**
+ * String values.
+ */
+class StringVal implements Value {
+    private String stringVal;
+    public StringVal(String s) { this.stringVal = s; }
+    public String toString() { return this.stringVal; }
+    public String getString() { return this.stringVal; }
+    @Override
+    public boolean equals(Object that) {
+        if (!(that instanceof StringVal)) return false;
+        return this.stringVal.equals(((StringVal) that).stringVal);
+    }
+}
+
 class NullVal implements Value {
     @Override
     public boolean equals(Object that) {

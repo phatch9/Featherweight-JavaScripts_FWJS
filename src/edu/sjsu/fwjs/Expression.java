@@ -74,86 +74,98 @@ class BinOpExpr implements Expression {
     public Value evaluate(Environment env) {
         Value a = this.e1.evaluate(env);
         Value b = this.e2.evaluate(env);
-        IntVal num1 = (IntVal) a;
-        IntVal num2 = (IntVal) b;
-        int result;
-        IntVal res;
-        Value res_final = new NullVal();
-        boolean check = false;
-        BoolVal boo;
-
-        switch(this.op)
-        {
-            case ADD :
-
-                result = num1.toInt() + num2.toInt();
-                res = new IntVal(result);
-                res_final =  (Value) res;
+        
+        switch(this.op) {
+            case ADD:
+                // Handle string concatenation
+                if (a instanceof StringVal || b instanceof StringVal) {
+                    String str1 = (a instanceof StringVal) ? ((StringVal) a).getString() : a.toString();
+                    String str2 = (b instanceof StringVal) ? ((StringVal) b).getString() : b.toString();
+                    return new StringVal(str1 + str2);
+                }
+                // Handle integer addition
+                else if (a instanceof IntVal && b instanceof IntVal) {
+                    int result = ((IntVal) a).toInt() + ((IntVal) b).toInt();
+                    return new IntVal(result);
+                }
                 break;
 
-            case SUBTRACT :
-                result = num1.toInt() - num2.toInt();
-                res = new IntVal(result);
-                res_final =  (Value) res;
+            case SUBTRACT:
+                if (a instanceof IntVal && b instanceof IntVal) {
+                    int result = ((IntVal) a).toInt() - ((IntVal) b).toInt();
+                    return new IntVal(result);
+                }
                 break;
 
-            case MULTIPLY :
-                result = num1.toInt() * num2.toInt();
-                res = new IntVal(result);
-                res_final =  (Value) res;
+            case MULTIPLY:
+                if (a instanceof IntVal && b instanceof IntVal) {
+                    int result = ((IntVal) a).toInt() * ((IntVal) b).toInt();
+                    return new IntVal(result);
+                }
                 break;
 
-            case DIVIDE :
-                result = num1.toInt() / num2.toInt();
-                res = new IntVal(result);
-                res_final =  (Value) res;
+            case DIVIDE:
+                if (a instanceof IntVal && b instanceof IntVal) {
+                    int result = ((IntVal) a).toInt() / ((IntVal) b).toInt();
+                    return new IntVal(result);
+                }
                 break;
 
-            case MOD :
-                result = num1.toInt() % num2.toInt();
-                res = new IntVal(result);
-                res_final =  (Value) res;
+            case MOD:
+                if (a instanceof IntVal && b instanceof IntVal) {
+                    int result = ((IntVal) a).toInt() % ((IntVal) b).toInt();
+                    return new IntVal(result);
+                }
                 break;
 
-            case GT :
-                if(num1.toInt() > num2.toInt())
-                    check = true;
-                boo =  new BoolVal(check);
-                res_final =  (Value) boo;
+            case GT:
+                if (a instanceof IntVal && b instanceof IntVal) {
+                    boolean result = ((IntVal) a).toInt() > ((IntVal) b).toInt();
+                    return new BoolVal(result);
+                } else if (a instanceof StringVal && b instanceof StringVal) {
+                    boolean result = ((StringVal) a).getString().compareTo(((StringVal) b).getString()) > 0;
+                    return new BoolVal(result);
+                }
                 break;
 
-            case GE :
-                if(num1.toInt() >= num2.toInt())
-                    check = true;
-                boo =  new BoolVal(check);
-                res_final =  (Value) boo;
+            case GE:
+                if (a instanceof IntVal && b instanceof IntVal) {
+                    boolean result = ((IntVal) a).toInt() >= ((IntVal) b).toInt();
+                    return new BoolVal(result);
+                } else if (a instanceof StringVal && b instanceof StringVal) {
+                    boolean result = ((StringVal) a).getString().compareTo(((StringVal) b).getString()) >= 0;
+                    return new BoolVal(result);
+                }
                 break;
 
-            case LT :
-                if(num1.toInt() < num2.toInt())
-                    check = true;
-                boo =  new BoolVal(check);
-                res_final =  (Value) boo;
+            case LT:
+                if (a instanceof IntVal && b instanceof IntVal) {
+                    boolean result = ((IntVal) a).toInt() < ((IntVal) b).toInt();
+                    return new BoolVal(result);
+                } else if (a instanceof StringVal && b instanceof StringVal) {
+                    boolean result = ((StringVal) a).getString().compareTo(((StringVal) b).getString()) < 0;
+                    return new BoolVal(result);
+                }
                 break;
 
-            case LE :
-                if(num1.toInt() <= num2.toInt())
-                    check = true;
-                boo =  new BoolVal(check);
-                res_final =  (Value) boo;
+            case LE:
+                if (a instanceof IntVal && b instanceof IntVal) {
+                    boolean result = ((IntVal) a).toInt() <= ((IntVal) b).toInt();
+                    return new BoolVal(result);
+                } else if (a instanceof StringVal && b instanceof StringVal) {
+                    boolean result = ((StringVal) a).getString().compareTo(((StringVal) b).getString()) <= 0;
+                    return new BoolVal(result);
+                }
                 break;
 
-            case EQ :
-                if(num1.toInt() == num2.toInt())
-                    check = true;
-                boo =  new BoolVal(check);
-                res_final =  (Value) boo;
-                break;
+            case EQ:
+                // Use the equals method for proper comparison
+                return new BoolVal(a.equals(b));
 
             default:
                 return new NullVal();
         }
-        return res_final;
+        return new NullVal();
     }
 }
 /**

@@ -1,4 +1,5 @@
 // Generated from FeatherweightJavaScript.g4 by ANTLR 4.13.2
+package edu.sjsu.fwjs.parser;
  package edu.sjsu.fwjs.parser; 
 import org.antlr.v4.runtime.tree.ParseTreeVisitor;
 

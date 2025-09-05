@@ -1,4 +1,5 @@
 // Generated from FeatherweightJavaScript.g4 by ANTLR 4.13.2
+package edu.sjsu.fwjs.parser;
  package edu.sjsu.fwjs.parser; 
 import org.antlr.v4.runtime.atn.*;
 import org.antlr.v4.runtime.dfa.DFA;
@@ -113,6 +114,14 @@ public class FeatherweightJavaScriptParser extends Parser {
 		}
 		@Override public int getRuleIndex() { return RULE_prog; }
 		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof FeatherweightJavaScriptListener ) ((FeatherweightJavaScriptListener)listener).enterProg(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof FeatherweightJavaScriptListener ) ((FeatherweightJavaScriptListener)listener).exitProg(this);
+		}
+		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
 			if ( visitor instanceof FeatherweightJavaScriptVisitor ) return ((FeatherweightJavaScriptVisitor<? extends T>)visitor).visitProg(this);
 			else return visitor.visitChildren(this);
@@ -176,6 +185,14 @@ public class FeatherweightJavaScriptParser extends Parser {
 		public TerminalNode SEPARATOR() { return getToken(FeatherweightJavaScriptParser.SEPARATOR, 0); }
 		public PrintContext(StatContext ctx) { copyFrom(ctx); }
 		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof FeatherweightJavaScriptListener ) ((FeatherweightJavaScriptListener)listener).enterPrint(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof FeatherweightJavaScriptListener ) ((FeatherweightJavaScriptListener)listener).exitPrint(this);
+		}
+		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
 			if ( visitor instanceof FeatherweightJavaScriptVisitor ) return ((FeatherweightJavaScriptVisitor<? extends T>)visitor).visitPrint(this);
 			else return visitor.visitChildren(this);
@@ -198,6 +215,14 @@ public class FeatherweightJavaScriptParser extends Parser {
 		public TerminalNode ELSE() { return getToken(FeatherweightJavaScriptParser.ELSE, 0); }
 		public IfThenElseContext(StatContext ctx) { copyFrom(ctx); }
 		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof FeatherweightJavaScriptListener ) ((FeatherweightJavaScriptListener)listener).enterIfThenElse(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof FeatherweightJavaScriptListener ) ((FeatherweightJavaScriptListener)listener).exitIfThenElse(this);
+		}
+		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
 			if ( visitor instanceof FeatherweightJavaScriptVisitor ) return ((FeatherweightJavaScriptVisitor<? extends T>)visitor).visitIfThenElse(this);
 			else return visitor.visitChildren(this);
@@ -215,6 +240,14 @@ public class FeatherweightJavaScriptParser extends Parser {
 			return getRuleContext(BlockContext.class,0);
 		}
 		public IfThenContext(StatContext ctx) { copyFrom(ctx); }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof FeatherweightJavaScriptListener ) ((FeatherweightJavaScriptListener)listener).enterIfThen(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof FeatherweightJavaScriptListener ) ((FeatherweightJavaScriptListener)listener).exitIfThen(this);
+		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
 			if ( visitor instanceof FeatherweightJavaScriptVisitor ) return ((FeatherweightJavaScriptVisitor<? extends T>)visitor).visitIfThen(this);
@@ -234,6 +267,14 @@ public class FeatherweightJavaScriptParser extends Parser {
 		}
 		public WhileContext(StatContext ctx) { copyFrom(ctx); }
 		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof FeatherweightJavaScriptListener ) ((FeatherweightJavaScriptListener)listener).enterWhile(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof FeatherweightJavaScriptListener ) ((FeatherweightJavaScriptListener)listener).exitWhile(this);
+		}
+		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
 			if ( visitor instanceof FeatherweightJavaScriptVisitor ) return ((FeatherweightJavaScriptVisitor<? extends T>)visitor).visitWhile(this);
 			else return visitor.visitChildren(this);
@@ -250,6 +291,14 @@ public class FeatherweightJavaScriptParser extends Parser {
 		public TerminalNode SEPARATOR() { return getToken(FeatherweightJavaScriptParser.SEPARATOR, 0); }
 		public VarDecContext(StatContext ctx) { copyFrom(ctx); }
 		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof FeatherweightJavaScriptListener ) ((FeatherweightJavaScriptListener)listener).enterVarDec(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof FeatherweightJavaScriptListener ) ((FeatherweightJavaScriptListener)listener).exitVarDec(this);
+		}
+		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
 			if ( visitor instanceof FeatherweightJavaScriptVisitor ) return ((FeatherweightJavaScriptVisitor<? extends T>)visitor).visitVarDec(this);
 			else return visitor.visitChildren(this);
@@ -263,6 +312,14 @@ public class FeatherweightJavaScriptParser extends Parser {
 		public TerminalNode SEPARATOR() { return getToken(FeatherweightJavaScriptParser.SEPARATOR, 0); }
 		public BareExprContext(StatContext ctx) { copyFrom(ctx); }
 		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof FeatherweightJavaScriptListener ) ((FeatherweightJavaScriptListener)listener).enterBareExpr(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof FeatherweightJavaScriptListener ) ((FeatherweightJavaScriptListener)listener).exitBareExpr(this);
+		}
+		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
 			if ( visitor instanceof FeatherweightJavaScriptVisitor ) return ((FeatherweightJavaScriptVisitor<? extends T>)visitor).visitBareExpr(this);
 			else return visitor.visitChildren(this);
@@ -272,6 +329,14 @@ public class FeatherweightJavaScriptParser extends Parser {
 	public static class EmptyContext extends StatContext {
 		public TerminalNode SEPARATOR() { return getToken(FeatherweightJavaScriptParser.SEPARATOR, 0); }
 		public EmptyContext(StatContext ctx) { copyFrom(ctx); }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof FeatherweightJavaScriptListener ) ((FeatherweightJavaScriptListener)listener).enterEmpty(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof FeatherweightJavaScriptListener ) ((FeatherweightJavaScriptListener)listener).exitEmpty(this);
+		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
 			if ( visitor instanceof FeatherweightJavaScriptVisitor ) return ((FeatherweightJavaScriptVisitor<? extends T>)visitor).visitEmpty(this);
@@ -431,6 +496,14 @@ public class FeatherweightJavaScriptParser extends Parser {
 		}
 		public FunctionDecContext(ExprContext ctx) { copyFrom(ctx); }
 		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof FeatherweightJavaScriptListener ) ((FeatherweightJavaScriptListener)listener).enterFunctionDec(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof FeatherweightJavaScriptListener ) ((FeatherweightJavaScriptListener)listener).exitFunctionDec(this);
+		}
+		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
 			if ( visitor instanceof FeatherweightJavaScriptVisitor ) return ((FeatherweightJavaScriptVisitor<? extends T>)visitor).visitFunctionDec(this);
 			else return visitor.visitChildren(this);
@@ -450,6 +523,14 @@ public class FeatherweightJavaScriptParser extends Parser {
 		public TerminalNode MOD() { return getToken(FeatherweightJavaScriptParser.MOD, 0); }
 		public MulDivModContext(ExprContext ctx) { copyFrom(ctx); }
 		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof FeatherweightJavaScriptListener ) ((FeatherweightJavaScriptListener)listener).enterMulDivMod(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof FeatherweightJavaScriptListener ) ((FeatherweightJavaScriptListener)listener).exitMulDivMod(this);
+		}
+		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
 			if ( visitor instanceof FeatherweightJavaScriptVisitor ) return ((FeatherweightJavaScriptVisitor<? extends T>)visitor).visitMulDivMod(this);
 			else return visitor.visitChildren(this);
@@ -463,6 +544,14 @@ public class FeatherweightJavaScriptParser extends Parser {
 		}
 		public TerminalNode RPAREN() { return getToken(FeatherweightJavaScriptParser.RPAREN, 0); }
 		public ParensContext(ExprContext ctx) { copyFrom(ctx); }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof FeatherweightJavaScriptListener ) ((FeatherweightJavaScriptListener)listener).enterParens(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof FeatherweightJavaScriptListener ) ((FeatherweightJavaScriptListener)listener).exitParens(this);
+		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
 			if ( visitor instanceof FeatherweightJavaScriptVisitor ) return ((FeatherweightJavaScriptVisitor<? extends T>)visitor).visitParens(this);
@@ -485,6 +574,14 @@ public class FeatherweightJavaScriptParser extends Parser {
 		}
 		public FunctionAppContext(ExprContext ctx) { copyFrom(ctx); }
 		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof FeatherweightJavaScriptListener ) ((FeatherweightJavaScriptListener)listener).enterFunctionApp(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof FeatherweightJavaScriptListener ) ((FeatherweightJavaScriptListener)listener).exitFunctionApp(this);
+		}
+		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
 			if ( visitor instanceof FeatherweightJavaScriptVisitor ) return ((FeatherweightJavaScriptVisitor<? extends T>)visitor).visitFunctionApp(this);
 			else return visitor.visitChildren(this);
@@ -494,6 +591,14 @@ public class FeatherweightJavaScriptParser extends Parser {
 	public static class BoolContext extends ExprContext {
 		public TerminalNode BOOL() { return getToken(FeatherweightJavaScriptParser.BOOL, 0); }
 		public BoolContext(ExprContext ctx) { copyFrom(ctx); }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof FeatherweightJavaScriptListener ) ((FeatherweightJavaScriptListener)listener).enterBool(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof FeatherweightJavaScriptListener ) ((FeatherweightJavaScriptListener)listener).exitBool(this);
+		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
 			if ( visitor instanceof FeatherweightJavaScriptVisitor ) return ((FeatherweightJavaScriptVisitor<? extends T>)visitor).visitBool(this);
@@ -505,6 +610,14 @@ public class FeatherweightJavaScriptParser extends Parser {
 		public TerminalNode NULL() { return getToken(FeatherweightJavaScriptParser.NULL, 0); }
 		public NullContext(ExprContext ctx) { copyFrom(ctx); }
 		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof FeatherweightJavaScriptListener ) ((FeatherweightJavaScriptListener)listener).enterNull(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof FeatherweightJavaScriptListener ) ((FeatherweightJavaScriptListener)listener).exitNull(this);
+		}
+		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
 			if ( visitor instanceof FeatherweightJavaScriptVisitor ) return ((FeatherweightJavaScriptVisitor<? extends T>)visitor).visitNull(this);
 			else return visitor.visitChildren(this);
@@ -514,6 +627,14 @@ public class FeatherweightJavaScriptParser extends Parser {
 	public static class StringContext extends ExprContext {
 		public TerminalNode STRING() { return getToken(FeatherweightJavaScriptParser.STRING, 0); }
 		public StringContext(ExprContext ctx) { copyFrom(ctx); }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof FeatherweightJavaScriptListener ) ((FeatherweightJavaScriptListener)listener).enterString(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof FeatherweightJavaScriptListener ) ((FeatherweightJavaScriptListener)listener).exitString(this);
+		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
 			if ( visitor instanceof FeatherweightJavaScriptVisitor ) return ((FeatherweightJavaScriptVisitor<? extends T>)visitor).visitString(this);
@@ -533,6 +654,14 @@ public class FeatherweightJavaScriptParser extends Parser {
 		public TerminalNode SUB() { return getToken(FeatherweightJavaScriptParser.SUB, 0); }
 		public AddSubContext(ExprContext ctx) { copyFrom(ctx); }
 		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof FeatherweightJavaScriptListener ) ((FeatherweightJavaScriptListener)listener).enterAddSub(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof FeatherweightJavaScriptListener ) ((FeatherweightJavaScriptListener)listener).exitAddSub(this);
+		}
+		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
 			if ( visitor instanceof FeatherweightJavaScriptVisitor ) return ((FeatherweightJavaScriptVisitor<? extends T>)visitor).visitAddSub(this);
 			else return visitor.visitChildren(this);
@@ -542,6 +671,14 @@ public class FeatherweightJavaScriptParser extends Parser {
 	public static class IdContext extends ExprContext {
 		public TerminalNode ID() { return getToken(FeatherweightJavaScriptParser.ID, 0); }
 		public IdContext(ExprContext ctx) { copyFrom(ctx); }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof FeatherweightJavaScriptListener ) ((FeatherweightJavaScriptListener)listener).enterId(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof FeatherweightJavaScriptListener ) ((FeatherweightJavaScriptListener)listener).exitId(this);
+		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
 			if ( visitor instanceof FeatherweightJavaScriptVisitor ) return ((FeatherweightJavaScriptVisitor<? extends T>)visitor).visitId(this);
@@ -564,6 +701,14 @@ public class FeatherweightJavaScriptParser extends Parser {
 		public TerminalNode SAME() { return getToken(FeatherweightJavaScriptParser.SAME, 0); }
 		public EqualityContext(ExprContext ctx) { copyFrom(ctx); }
 		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof FeatherweightJavaScriptListener ) ((FeatherweightJavaScriptListener)listener).enterEquality(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof FeatherweightJavaScriptListener ) ((FeatherweightJavaScriptListener)listener).exitEquality(this);
+		}
+		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
 			if ( visitor instanceof FeatherweightJavaScriptVisitor ) return ((FeatherweightJavaScriptVisitor<? extends T>)visitor).visitEquality(this);
 			else return visitor.visitChildren(this);
@@ -573,6 +718,14 @@ public class FeatherweightJavaScriptParser extends Parser {
 	public static class IntContext extends ExprContext {
 		public TerminalNode INT() { return getToken(FeatherweightJavaScriptParser.INT, 0); }
 		public IntContext(ExprContext ctx) { copyFrom(ctx); }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof FeatherweightJavaScriptListener ) ((FeatherweightJavaScriptListener)listener).enterInt(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof FeatherweightJavaScriptListener ) ((FeatherweightJavaScriptListener)listener).exitInt(this);
+		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
 			if ( visitor instanceof FeatherweightJavaScriptVisitor ) return ((FeatherweightJavaScriptVisitor<? extends T>)visitor).visitInt(this);
@@ -587,6 +740,14 @@ public class FeatherweightJavaScriptParser extends Parser {
 			return getRuleContext(ExprContext.class,0);
 		}
 		public AssiStateContext(ExprContext ctx) { copyFrom(ctx); }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof FeatherweightJavaScriptListener ) ((FeatherweightJavaScriptListener)listener).enterAssiState(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof FeatherweightJavaScriptListener ) ((FeatherweightJavaScriptListener)listener).exitAssiState(this);
+		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
 			if ( visitor instanceof FeatherweightJavaScriptVisitor ) return ((FeatherweightJavaScriptVisitor<? extends T>)visitor).visitAssiState(this);
@@ -884,6 +1045,14 @@ public class FeatherweightJavaScriptParser extends Parser {
 		}
 		public FullBlockContext(BlockContext ctx) { copyFrom(ctx); }
 		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof FeatherweightJavaScriptListener ) ((FeatherweightJavaScriptListener)listener).enterFullBlock(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof FeatherweightJavaScriptListener ) ((FeatherweightJavaScriptListener)listener).exitFullBlock(this);
+		}
+		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
 			if ( visitor instanceof FeatherweightJavaScriptVisitor ) return ((FeatherweightJavaScriptVisitor<? extends T>)visitor).visitFullBlock(this);
 			else return visitor.visitChildren(this);
@@ -895,6 +1064,14 @@ public class FeatherweightJavaScriptParser extends Parser {
 			return getRuleContext(StatContext.class,0);
 		}
 		public SimpBlockContext(BlockContext ctx) { copyFrom(ctx); }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof FeatherweightJavaScriptListener ) ((FeatherweightJavaScriptListener)listener).enterSimpBlock(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof FeatherweightJavaScriptListener ) ((FeatherweightJavaScriptListener)listener).exitSimpBlock(this);
+		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
 			if ( visitor instanceof FeatherweightJavaScriptVisitor ) return ((FeatherweightJavaScriptVisitor<? extends T>)visitor).visitSimpBlock(this);
