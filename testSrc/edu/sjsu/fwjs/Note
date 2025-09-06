@@ -1,0 +1,12 @@
+String operations in the Featherweight JavaScript implementation. Here's what the test file includes:
+
+String Literals: Tests basic string creation and evaluation
+String Concatenation: Tests string concatenation with both strings and numbers
+String Comparison: Tests various comparison operations (==, !=, <, >)
+String Variables: Tests string variables and their usage in expressions
+Empty String: Tests handling of empty strings
+To run these tests, you can use the following command:
+
+
+$ javac -cp .:lib/* -d build testSrc/edu/sjsu/fwjs/StringTest.java src/edu/sjsu/fwjs/*.java
+$ java -cp build:lib/* org.junit.runner.JUnitCore ed
